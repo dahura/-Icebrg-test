@@ -23,13 +23,13 @@ export class AuthService {
       },
       body: JSON.stringify(credentials),
     });
-    const { access_token, refresh_token } =
+
+    const { access_token, refresh_token, email, name, username } =
       (await response.json()) as ResponseLoginData;
-    console.log(access_token);
     this.refresh_token = refresh_token;
     this.token = access_token;
     this.refresh_time = new Date().getTime();
-    return { access_token, refresh_token };
+    return { access_token, refresh_token, user: { email, name, username } };
   }
   async getToken() {
     if (this.isTokenExpired()) {
@@ -64,6 +64,10 @@ export class AuthService {
     this.token = access_token;
     this.refresh_token = refresh_token;
     this.refresh_time = new Date().getTime();
+  }
+
+  logOut() {
+    (this.token = ""), (this.refresh_token = ""), (this.refresh_time = null);
   }
 }
 export const authService = new AuthService();
