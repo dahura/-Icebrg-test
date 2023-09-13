@@ -18,7 +18,7 @@ import { useAuth } from "../auth/useAuth";
 
 const loginFormShema = z.object({
   email: z.string().email(),
-  password: z.string(),
+  password: z.string().min(4),
 });
 type loginRequestData = z.infer<typeof loginFormShema>;
 
