@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { Modal } from "../../components/Modal";
 import { LoginForm } from "../../components/LoginForm";
 import { authService } from "../authService";
