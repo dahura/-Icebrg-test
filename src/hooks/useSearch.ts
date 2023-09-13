@@ -8,12 +8,15 @@ export const useSearch = () => {
     countries: null,
     languages: null,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleSearch = async (query: string) => {
+    setLoading(true);
     const response = await fetcher("/search", {
       body: JSON.stringify({ query: query }),
     });
     const suggestedList = await response.json();
+    setLoading(false);
     setSuggestedLsit(suggestedList);
   };
 
@@ -21,5 +24,6 @@ export const useSearch = () => {
   return {
     search: handleSearchDebounced,
     suggestedList,
+    loading,
   };
 };

@@ -46,13 +46,15 @@ export const SearchList: FC<Props> = ({
                   <div className="text-sm text-slate-500"> {native}</div>
                   <div className="flex justify-between text-xs">
                     <div className="text-green-700 flex flex-col  font-bold">
-                      {capital}
+                      <div>{capital}</div>
                       <div className="text-green-900 font-medium">
                         {languages.split(",").join(" ")}
                       </div>
                     </div>
-                    <div className="text-green-700">
-                      + {phone} <div className="text-green-300">{currency}</div>
+
+                    <div className="text-green-700  flex  flex-col  space-y-1  items-end">
+                      <div>+ {phone}</div>
+                      <div className="text-green-300">{currency}</div>
                     </div>
                   </div>
                 </li>
